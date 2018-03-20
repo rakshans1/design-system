@@ -222,4 +222,8 @@ InputField.propTypes = {
   }
 }
 
+InputField.defaultProps = {
+  theme: theme
+}
+
 export default InputField
