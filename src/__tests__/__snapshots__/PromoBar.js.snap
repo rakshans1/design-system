@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PromoBar renders default 1`] = `
+.c0 {
+  padding: 16px;
+  background-color: #001833;
+}
+
+.c4 {
+  margin-right: 16px;
+  padding-right: 16px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7 {
+  font-size: 12px;
+  margin: 0px;
+  color: #fff;
+}
+
+.c5 {
+  font-size: 12px;
+  margin: 0px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.c2 {
+  width: 200px;
+  text-align: center;
+  border-right: 1px solid #fff;
+}
+
+.c2 > h6 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+.c6 > p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media screen and (min-width:32em) {
+  .c7 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width:40em) {
+  .c7 {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width:48em) {
+  .c7 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width:31.99em) {
+  .c3 {
+    display: none;
+  }
+}
+
+@media screen and (min-width:32em) and (max-width:39.99em) {
+  .c3 {
+    display: none;
+  }
+}
+
+@media screen and (min-width:40em) and (max-width:47.99em) {
+  .c3 {
+    display: none;
+  }
+}
+
+@media screen and (min-width:48em) and (max-width:63.99em) {
+  .c3 {
+    display: none;
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2 c3 c4"
+    >
+      <h6
+        className="c5"
+        color="white"
+        fontSize={0}
+      />
+    </div>
+    <div
+      className="c6 "
+    >
+      <p
+        className="c7"
+        color="white"
+        fontSize={
+          Array [
+            0,
+            0,
+            0,
+            1,
+          ]
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
