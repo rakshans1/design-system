@@ -1,76 +1,95 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { space } from 'styled-system'
+import { color, propTypes, space } from 'styled-system'
 import theme from './theme'
 
-const type = props => {
-  const badgeColors = {
-    blue: {
-      backgroundColor: props.theme.colors.blue,
-      color: props.theme.colors.white
-    },
-    lightBlue: {
-      backgroundColor: props.theme.colors.lightBlue,
-      color: props.theme.colors.darkBlue
-    },
-    green: {
-      backgroundColor: props.theme.colors.green,
-      color: props.theme.colors.white
-    },
-    lightGreen: {
-      backgroundColor: props.theme.colors.lightGreen,
-      color: props.theme.colors.darkGreen
-    },
-    red: {
-      backgroundColor: props.theme.colors.red,
-      color: props.theme.colors.white
-    },
-    lightRed: {
-      backgroundColor: props.theme.colors.lightRed,
-      color: props.theme.colors.darkRed
-    },
-    orange: {
-      backgroundColor: props.theme.colors.orange,
-      color: props.theme.colors.text
-    },
-    lightOrange: {
-      backgroundColor: props.theme.colors.lightOrange,
-      color: props.theme.colors.darkOrange
-    }
-  }
-  return badgeColors[props.bg]
+const subtleBackgroundColor = {
+  gray: theme.colors.lightGray,
+  blue: theme.colors.lightBlue,
+  green: theme.colors.lightGreen,
+  purple: theme.colors.lightPurple,
+  orange: theme.colors.lightOrange,
+  red: theme.colors.lightRed
 }
 
+const subtleTextColor = {
+  gray: theme.colors.text,
+  blue: theme.colors.blue,
+  green: theme.colors.green,
+  purple: theme.colors.purple,
+  orange: theme.colors.text,
+  red: theme.colors.red
+}
+
+const boldBackgroundColor = {
+  gray: theme.colors.gray,
+  blue: theme.colors.blue,
+  green: theme.colors.green,
+  purple: theme.colors.purple,
+  orange: theme.colors.orange,
+  red: theme.colors.red,
+  white: theme.colors.white
+}
+
+const boldTextColor = {
+  gray: theme.colors.white,
+  blue: theme.colors.white,
+  green: theme.colors.white,
+  purple: theme.colors.white,
+  orange: theme.colors.text,
+  red: theme.colors.white,
+  white: theme.colors.text
+}
+
+const fontWeight = {
+  regular: theme.regular,
+  bold: theme.bold
+}
+
+const textTransform = {
+  capitalize: 'capitalize',
+  uppercase: 'uppercase'
+}
+
+const getBackgroundColor = ({ status, isBold }) =>
+  isBold ? boldBackgroundColor[status] : subtleBackgroundColor[status]
+
+const getTextColor = ({ status, isBold }) =>
+  isBold ? boldTextColor[status] : subtleTextColor[status]
+
+const getFontWeight = ({ isBold }) =>
+  isBold ? fontWeight.bold : fontWeight.regular
+
+const getTextTransform = ({ isBold }) =>
+  isBold ? textTransform.uppercase : textTransform.capitalize
+
 const Badge = styled.div`
-  border-radius: 99999px;
-  display: inline-block;
+  height: 24px;
+  color: ${getTextColor};
+  background-color: ${getBackgroundColor};
+  font-family: inherit;
+  line-height: 24px;
   font-size: ${props => props.theme.fontSizes[0]}px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  ${space} ${type};
+  font-weight: ${getFontWeight};
+  text-transform: ${getTextTransform};
+  padding-left: ${props => props.theme.space[2]}px;
+  padding-right: ${props => props.theme.space[2]}px;
+  border-radius: ${props => props.theme.radius};
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  ${space};
 `
 
 Badge.displayName = 'Badge'
 
-const numberStringOrArray = PropTypes.oneOfType([
-  PropTypes.number,
-  PropTypes.string,
-  PropTypes.array
-])
-
 Badge.propTypes = {
-  bg: PropTypes.string,
-  px: numberStringOrArray,
-  py: numberStringOrArray
+  ...propTypes.color
 }
 
 Badge.defaultProps = {
-  px: 2,
-  py: 1,
-  theme: theme,
-  color: 'text'
+  theme: theme
 }
 
 export default Badge
