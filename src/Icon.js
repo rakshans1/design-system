@@ -1,38 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
-import { space, color, propTypes, cleanElement } from 'styled-system'
-import PropTypes from 'prop-types'
-import icons from '../icons.json'
+import * as icons from './icons'
 
-const getPath = ({ name }) => icons[name]
+const lowerFirst = str => str.charAt(0) + str.slice(1)
 
-// Remove `space` props from the `svg` element prevents react warnings
-const CleanSvg = cleanElement('svg')
-CleanSvg.propTypes = {
-  ...propTypes.space
-}
+const getPath = name => icons[name || lowerFirst(name)]
 
-const Base = ({ name, size, ...props }) => {
-  const icon = getPath({ name })
+const Icon = ({ name, size, ...props }) => {
+  const icon = getPath(name)
   if (!icon) return false
-
-  return (
-    <CleanSvg
-      {...props}
-      viewBox={icon.viewBox}
-      width={size}
-      height={size}
-      fill="currentcolor"
-    >
-      <path d={icon.path} />
-    </CleanSvg>
-  )
+  return icon
 }
-
-const Icon = styled(Base)`
-  flex: none;
-  ${space} ${color};
-`
 
 Icon.displayName = 'Icon'
 
